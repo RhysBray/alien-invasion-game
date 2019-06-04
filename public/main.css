@@ -25,11 +25,12 @@ body {
   height: 95%;
   background-image: url("./stars.jpg");
   background-position: center;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: soft-light;
   background-color: rgb(36, 48, 80);
-  box-shadow: 0 0 5px 5px chartreuse;
+  box-shadow: 0 0 30px 10px chartreuse;
+  border-radius: 30px;
 }
 
 header {
@@ -45,12 +46,13 @@ header {
 h1 {
   font-size: 40pt;
   color: chartreuse;
-  text-shadow: 1px 2px 2px red, -1px -1px 2px red, -2px -3px 10px black,
+  text-shadow: 2px 3px 2px red, -1px -1px 2px red, -2px -3px 10px black,
     4px 6px 15px black;
 }
 
 h2 {
   font-size: 25pt;
+  font-style: italic;
   color: black;
   text-shadow: 1px 2px 2px red, -1px -1px 2px chartreuse, -1px -2px 8px black,
     3px 5px 10px black;
@@ -72,7 +74,6 @@ main {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: solid chartreuse 2pt;
 }
 
 #leader {
@@ -81,45 +82,52 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* border: solid chartreuse 2pt; */
 }
 
 #mother-ship {
   width: fit-content;
-  height: auto;
+  height: 6em;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   font-size: 20pt;
-  background-color: rgba(220, 20, 60, 0.4);
   border-radius: 30px;
   margin: 10px;
-  padding: 40px;
+  padding: 40px 40px 0 40px;
+  color: chartreuse;
+  text-shadow: 1px 2px 2px red, -1px -1px 2px red, -1px -1px 5px black,
+    1px 1px 5px black;
+  background-image: url("./mother-ship.png");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #swarm {
-  width: 100%;
+  width: 80%;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  /* border: solid chartreuse 2pt; */
 }
 
 #alien {
   width: fit-content;
-  height: fit-content;
+  height: 3.5em;
   display: flex;
   justify-content: center;
-  align-items: center;
-  font-size: 15pt;
-  background-color: rgba(220, 20, 137, 0.4);
+  align-items: flex-end;
+  color: chartreuse;
+  text-shadow: 1px 2px 2px red, -1px -1px 2px red, -1px -1px 5px black,
+    1px 1px 5px black;
+  font-size: 13pt;
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   margin: 10px;
-  /* border: solid chartreuse 2pt; */
+  background-image: url("./alien.png");
+  background-position: center;
+  background-size: cover;
 }
 
 #buttons {
@@ -128,15 +136,6 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-#controls {
-  width: 85%;
-  height: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border: solid chartreuse 2pt;
 }
 
 button {
