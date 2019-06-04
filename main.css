@@ -1,0 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Joti One", cursive;
+  /* font-family: "Audiowide", cursive; */
+  /* font-family: 'Jim Nightshade', cursive; */
+}
+
+html {
+  background-color: black;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: solid chartreuse 2pt; */
+}
+
+#game-board {
+  width: 95%;
+  height: 95%;
+  background-image: url("./assets/images/stars.jpg");
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  background-blend-mode: soft-light;
+  background-color: rgb(36, 48, 80);
+  box-shadow: 0 0 5px 5px chartreuse;
+}
+
+header {
+  width: 100%;
+  /* border: solid chartreuse 2pt; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 40pt;
+  color: chartreuse;
+  text-shadow: 1px 2px 2px red, -1px -1px 2px red, -2px -3px 10px black,
+    4px 6px 15px black;
+  /* border: solid chartreuse 2pt; */
+}
+
+h2 {
+  font-size: 25pt;
+  color: black;
+  text-shadow: 1px 2px 2px red, -1px -1px 2px chartreuse, -1px -2px 8px black,
+    3px 5px 10px black;
+  /* border: solid chartreuse 2pt; */
+}
+
+main {
+  /* border: solid chartreuse 2pt; */
+}
+
+#swarm {
+  /* border: solid chartreuse 2pt; */
+}
+
+#alien {
+  /* border: solid chartreuse 2pt; */
+}
+
+#controls {
+  /* border: solid chartreuse 2pt; */
+}
