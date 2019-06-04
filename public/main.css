@@ -20,18 +20,10 @@ body {
   align-items: center;
 }
 
-#restart {
-  position: absolute;
-  top: 85vh;
-  left: 5vw;
-  font-size: 10pt;
-  padding: 10px;
-}
-
 #game-board {
   width: 95%;
   height: 95%;
-  background-image: url("./assets/images/stars.jpg");
+  background-image: url("../assets/images/stars.jpg");
   background-position: center;
   background-repeat: none;
   background-size: cover;
@@ -67,6 +59,10 @@ h2 {
 main {
   width: 100%;
   height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #invasion {
@@ -126,11 +122,19 @@ main {
   /* border: solid chartreuse 2pt; */
 }
 
-#controls {
+#buttons {
   width: 100%;
   height: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#controls {
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
   align-items: center;
   border: solid chartreuse 2pt;
 }
@@ -151,10 +155,13 @@ button {
   border: red solid 3pt;
 }
 
-.attack:hover {
+.attack:active {
   box-shadow: 0 0 10px 11px red;
 }
 
-.attack:active {
-  box-shadow: 0 0 0 0 red;
+#restart {
+  top: 85vh;
+  left: 5vw;
+  font-size: 10pt;
+  padding: 10px;
 }

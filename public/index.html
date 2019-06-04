@@ -13,7 +13,6 @@
   </head>
   <body>
     <div id="game-board">
-      <button id="restart" onclick="gameStart()">restart</button>
       <header>
         <h1>Aliens Are Invading!</h1>
         <h2>Use the weapons to defend!</h2>
@@ -23,8 +22,11 @@
           <div id="leader"></div>
           <div id="swarm"></div>
         </section>
-        <section id="controls">
-          <button class="attack" onclick="shoot()">Shoot</button>
+        <section id="buttons">
+          <button id="restart" onclick="gameStart()">restart</button>
+          <div id="controls">
+            <button class="attack" onclick="shoot()">Shoot</button>
+          </div>
         </section>
       </main>
     </div>
