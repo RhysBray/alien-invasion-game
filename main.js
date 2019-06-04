@@ -2,6 +2,7 @@ const numberOfDrones = 20;
 let invasionForce = [];
 
 const gameStart = () => {
+  invasionForce = [];
   spawnInvasionForce();
   newRound();
 };
