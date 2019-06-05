@@ -3,10 +3,17 @@ let playerHealth = 100;
 let invasionForce = [];
 
 const gameStart = () => {
-  playerHealth = 10;
-  invasionForce = [];
+  refreshBoard();
   spawnInvasionForce();
   newRound();
+};
+
+const refreshBoard = () => {
+  document.getElementById("game-end").className = "hide";
+  document.getElementById("loser").innerHTML = "";
+  document.getElementById("winner").innerHTML = "";
+  playerHealth = 100;
+  invasionForce = [];
 };
 
 const spawnInvasionForce = () => {
@@ -18,18 +25,27 @@ const spawnInvasionForce = () => {
 };
 
 const newRound = () => {
+  showHealth();
   playerHealth <= 0 ? loseGame() : invasionForce.length == 0 ? winGame() : null;
   document.getElementById("leader").innerHTML = "";
   document.getElementById("swarm").innerHTML = "";
   showInvasionForce();
 };
 
+const showHealth = () => {
+  document.getElementById("health-bar").innerHTML =
+    "Your Health: " + playerHealth;
+};
+
 const loseGame = () => {
-  console.log("You Lose!");
+  document.getElementById("game-end").className = "";
+  document.getElementById("loser").innerHTML = "You Lose!";
 };
 
 const winGame = () => {
-  console.log("You Win!");
+  document.getElementById("game-end").className = "";
+  document.getElementById("winner").innerHTML =
+    "You've Defeated The Invasion Force!";
 };
 
 const updateHealthBar = attackType => {
@@ -41,7 +57,6 @@ const updateHealthBar = attackType => {
       : attackType === "bomb"
       ? (playerHealth -= 15)
       : (playerHealth -= 30);
-    console.log(playerHealth);
   }
 };
 

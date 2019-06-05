@@ -9,10 +9,23 @@
       href="https://fonts.googleapis.com/css?family=Audiowide|Jim+Nightshade|Joti+One&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="./images/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" href="./images/favicon/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="./images/favicon/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      sizes="512x512"
+      href="./images/favicon/android-chrome-512x512.png"
+    />
     <title>Alien Invasion!</title>
   </head>
   <body>
     <div id="game-board">
+      <h3 id="health-bar"></h3>
       <header>
         <h1>Aliens Are Invading!</h1>
         <h2>Defeat the invasion force!</h2>
@@ -23,11 +36,16 @@
           <div id="swarm"></div>
         </section>
         <section id="buttons">
-          <button id="restart" onclick="gameStart()">restart</button>
+          <button id="reset" onclick="gameStart()">reset</button>
           <button class="attack" onclick="singleShot()">Single Shot</button>
           <button class="attack" onclick="scatterShot()">Scatter Shot</button>
           <button class="attack" onclick="bomb()">Bomb</button>
           <button class="attack" onclick="nuke()">Nuke</button>
+        </section>
+        <section id="game-end" class="hide">
+          <article id="loser"></article>
+          <article id="winner"></article>
+          <button id="restart" onclick="gameStart()">reset</button>
         </section>
       </main>
     </div>

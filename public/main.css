@@ -23,7 +23,7 @@ body {
 #game-board {
   width: 95%;
   height: 95%;
-  background-image: url("./stars.gif");
+  background-image: url("./images/stars.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -31,6 +31,21 @@ body {
   background-color: rgb(59, 59, 59);
   box-shadow: 0 0 30px 10px chartreuse;
   border-radius: 30px;
+}
+
+#health-bar {
+  position: absolute;
+  top: 72vh;
+  left: 8vw;
+  font-size: 25pt;
+  color: rgb(251, 255, 0);
+  text-shadow: 2px 3px 2px rgb(106, 14, 192), -2px -3px 10px black,
+    4px 6px 15px black;
+}
+
+#health-bar:hover {
+  z-index: 2;
+  transform: scale(1.2);
 }
 
 header {
@@ -50,13 +65,13 @@ header {
     transform: scale(1.5);
   }
   33% {
-    transform: translateX(2px) translateY(2px) scale(1.5);
+    transform: translateX(2px) translateY(2px) scale(1.7);
   }
   66% {
-    transform: translateX(-2px) rotate(-1deg) scale(1.5);
+    transform: translateX(-2px) rotate(-1deg) scale(1.7);
   }
   100% {
-    transform: translateX(0px) scale(1.5);
+    transform: translateX(0px) scale(1.7);
   }
 }
 
@@ -68,6 +83,7 @@ h1 {
   animation-name: title-wobble;
   animation-duration: 0.2s;
   animation-iteration-count: 5;
+  animation-delay: 1.5s;
 }
 
 h1:hover {
@@ -156,7 +172,7 @@ main {
   color: chartreuse;
   text-shadow: 1px 2px 2px red, -1px -1px 2px red, -1px -1px 5px black,
     1px 1px 5px black;
-  background-image: url("./mother-ship.png");
+  background-image: url("./images/mother-ship.png");
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
@@ -208,7 +224,7 @@ main {
   border-radius: 10px;
   padding: 10px 10px 0 10px;
   margin: 10px;
-  background-image: url("./alien.png");
+  background-image: url("./images/alien.png");
   background-position: center;
   background-size: cover;
 }
@@ -224,7 +240,6 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  z-index: 1;
 }
 
 button {
@@ -237,10 +252,11 @@ button {
   cursor: pointer;
   font-family: "Audiowide", cursive;
   font-weight: bold;
+  transition-duration: 0.1s;
 }
 
 button:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .attack {
@@ -248,17 +264,51 @@ button:hover {
 }
 
 .attack:hover {
-  transition-duration: 0.2s;
-  box-shadow: 0 0 10px 11px red;
+  box-shadow: 0px 0px 10px 2px red;
+  text-shadow: 0px 6px 5px rgb(145, 145, 145);
 }
 
 .attack:active {
   box-shadow: none;
 }
 
-#restart {
+#reset {
   top: 85vh;
   left: 5vw;
   font-size: 10pt;
   padding: 10px;
+}
+
+.hide {
+  visibility: hidden;
+  z-index: -1;
+}
+
+#game-end {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(133, 67, 5, 0.8);
+}
+
+#loser {
+  font-size: 45pt;
+  color: red;
+  text-shadow: 0px 8px 5px black, 0px -8px 5px black, 8px 0px 5px black,
+    -8px 0px 5px black;
+  margin: 50px;
+}
+
+#winner {
+  font-size: 45pt;
+  color: chartreuse;
+  text-shadow: 0px 8px 5px blueviolet, 0px -8px 5px blueviolet,
+    8px 0px 5px blueviolet, -8px 0px 5px blueviolet;
+  margin: 50px;
 }
