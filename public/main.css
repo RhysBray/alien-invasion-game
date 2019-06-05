@@ -35,7 +35,9 @@ body {
 
 header {
   width: 100%;
+  max-width: 100%;
   height: 20%;
+  max-height: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,11 +45,36 @@ header {
   padding: 10px;
 }
 
+@keyframes title-wobble {
+  0% {
+    transform: scale(1.5);
+  }
+  33% {
+    transform: translateX(2px) translateY(2px) scale(1.5);
+  }
+  66% {
+    transform: translateX(-2px) rotate(-1deg) scale(1.5);
+  }
+  100% {
+    transform: translateX(0px) scale(1.5);
+  }
+}
+
 h1 {
   font-size: 40pt;
   color: chartreuse;
   text-shadow: 2px 3px 2px red, -1px -1px 2px red, -2px -3px 10px black,
     4px 6px 15px black;
+  animation-name: title-wobble;
+  animation-duration: 0.2s;
+  animation-iteration-count: 5;
+}
+
+h1:hover {
+  position: relative;
+  z-index: 2;
+  transform-origin: top;
+  transform: scale(1.2);
 }
 
 h2 {
@@ -56,6 +83,13 @@ h2 {
   color: black;
   text-shadow: 1px 2px 2px red, -1px -1px 2px chartreuse, -1px -2px 8px black,
     3px 5px 10px black;
+}
+
+h2:hover {
+  position: relative;
+  z-index: 2;
+  transform-origin: top;
+  transform: scale(1.2);
 }
 
 main {
@@ -90,7 +124,7 @@ main {
   justify-content: flex-start;
   align-items: center;
   animation-name: mother-ship-wobble;
-  animation-duration: 2.5s;
+  animation-duration: 3s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate-reverse;
@@ -103,7 +137,7 @@ main {
   justify-content: center;
   align-items: center;
   animation-name: mother-ship-wobble;
-  animation-duration: 2s;
+  animation-duration: 3.4s;
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-direction: alternate-reverse;
@@ -205,12 +239,21 @@ button {
   font-weight: bold;
 }
 
+button:hover {
+  transform: scale(1.2);
+}
+
 .attack {
   border: red solid 3pt;
 }
 
-.attack:active {
+.attack:hover {
+  transition-duration: 0.2s;
   box-shadow: 0 0 10px 11px red;
+}
+
+.attack:active {
+  box-shadow: none;
 }
 
 #restart {
