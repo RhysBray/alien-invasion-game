@@ -23,12 +23,12 @@ body {
 #game-board {
   width: 95%;
   height: 95%;
-  background-image: url("./stars.jpg");
+  background-image: url("./stars.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-blend-mode: soft-light;
-  background-color: rgb(36, 48, 80);
+  background-color: rgb(59, 59, 59);
   box-shadow: 0 0 30px 10px chartreuse;
   border-radius: 30px;
 }
