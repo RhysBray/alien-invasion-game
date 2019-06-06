@@ -82,7 +82,7 @@ h1 {
     4px 6px 15px black;
   animation-name: title-wobble;
   animation-duration: 0.2s;
-  animation-iteration-count: 5;
+  animation-iteration-count: 3;
   animation-delay: 1.5s;
 }
 
@@ -269,6 +269,21 @@ button:hover {
 }
 
 .attack:active {
+  transform: scale(1);
+  box-shadow: none;
+}
+
+.heal {
+  border: chartreuse solid 3pt;
+}
+
+.heal:hover {
+  box-shadow: 0px 0px 10px 2px chartreuse;
+  text-shadow: 0px 6px 5px rgb(145, 145, 145);
+}
+
+.heal:active {
+  transform: scale(1);
   box-shadow: none;
 }
 

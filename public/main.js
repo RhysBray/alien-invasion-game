@@ -1,6 +1,7 @@
 const numberOfDrones = 15;
 let playerHealth = 100;
 let invasionForce = [];
+let healingValue = 15;
 
 const gameStart = () => {
   refreshBoard();
@@ -14,13 +15,14 @@ const refreshBoard = () => {
   document.getElementById("winner").innerHTML = "";
   playerHealth = 100;
   invasionForce = [];
+  healingValue = 15;
 };
 
 const spawnInvasionForce = () => {
-  invasionForce.push({ type: "Mothership", hp: 60 });
+  invasionForce.push({ type: "Mothership", hp: 110 });
 
   for (var drones = 0; drones <= numberOfDrones; drones++) {
-    invasionForce.push({ type: "Drone", hp: 20 });
+    invasionForce.push({ type: "Drone", hp: 30 });
   }
 };
 
@@ -29,6 +31,7 @@ const newRound = () => {
   playerHealth <= 0 ? loseGame() : invasionForce.length == 0 ? winGame() : null;
   document.getElementById("leader").innerHTML = "";
   document.getElementById("swarm").innerHTML = "";
+  healAliens();
   showInvasionForce();
 };
 
@@ -48,16 +51,17 @@ const winGame = () => {
     "You've Defeated The Invasion Force!";
 };
 
-const updateHealthBar = attackType => {
+const harmPlayer = attackType => {
   if (invasionForce.length > 0) {
     attackType === "single-shot"
-      ? (playerHealth -= 5)
+      ? (playerHealth -= 7)
       : attackType === "scatter-shot"
       ? (playerHealth -= 10)
       : attackType === "bomb"
-      ? (playerHealth -= 15)
-      : (playerHealth -= 30);
+      ? (playerHealth -= 11)
+      : (playerHealth -= 32);
   }
+  showHealth();
 };
 
 const showInvasionForce = () => {
@@ -70,46 +74,55 @@ const showInvasionForce = () => {
   });
 };
 
+const randomIndex = () => {
+  return Math.floor(Math.random() * invasionForce.length);
+};
+
 const singleShot = () => {
   if (invasionForce.length > 0 && playerHealth > 0) {
-    let randomIndex = Math.floor(Math.random() * invasionForce.length);
-    invasionForce[randomIndex].hp -= 10;
+    invasionForce[randomIndex()].hp -= 10;
+    healingValue += 1;
     checkMotherShip();
     deleteDead();
-    updateHealthBar("single-shot");
+    harmPlayer("single-shot");
     newRound();
   }
 };
 
 const scatterShot = () => {
   if (invasionForce.length > 0 && playerHealth > 0) {
-    let randomIndex1 = Math.floor(Math.random() * invasionForce.length);
-    let randomIndex2 = Math.floor(Math.random() * invasionForce.length);
-    let randomIndex3 = Math.floor(Math.random() * invasionForce.length);
-    let randomIndex4 = Math.floor(Math.random() * invasionForce.length);
-
-    invasionForce[randomIndex1].hp -= 10;
-    invasionForce[randomIndex2].hp -= 10;
-    invasionForce[randomIndex3].hp -= 5;
-    invasionForce[randomIndex4].hp -= 5;
+    invasionForce[randomIndex()].hp -= 10;
+    invasionForce[randomIndex()].hp -= 10;
+    invasionForce[randomIndex()].hp -= 5;
+    invasionForce[randomIndex()].hp -= 5;
+    healingValue += 2;
     checkMotherShip();
     deleteDead();
-    updateHealthBar("scatter-shot");
+    harmPlayer("scatter-shot");
     newRound();
   }
 };
 
 const bomb = () => {
   if (invasionForce.length > 0 && playerHealth > 0) {
-    let randomIndex = Math.floor(Math.random() * invasionForce.length);
-    invasionForce[randomIndex + 1].hp -= 10;
-    invasionForce[randomIndex + 2].hp -= 10;
-    invasionForce[randomIndex].hp -= 10;
-    invasionForce[randomIndex - 1].hp -= 10;
-    invasionForce[randomIndex - 2].hp -= 10;
+    primaryTarget = randomIndex();
+    invasionForce[primaryTarget + 1].hp
+      ? (invasionForce[primaryTarget + 1].hp -= 5)
+      : null;
+    invasionForce[primaryTarget + 2].hp
+      ? (invasionForce[primaryTarget + 1].hp -= 6)
+      : null;
+    invasionForce[primaryTarget].hp -= 10;
+    invasionForce[primaryTarget - 1].hp
+      ? (invasionForce[primaryTarget + 1].hp -= 9)
+      : null;
+    invasionForce[primaryTarget - 2].hp
+      ? (invasionForce[primaryTarget + 1].hp -= 7)
+      : null;
+    healingValue += 1;
     checkMotherShip();
     deleteDead();
-    updateHealthBar("bomb");
+    harmPlayer("bomb");
     newRound();
   }
 };
@@ -117,13 +130,26 @@ const bomb = () => {
 const nuke = () => {
   if (invasionForce.length > 0 && playerHealth > 0) {
     invasionForce.map(alien => {
-      alien.hp -= 15;
+      alien.hp -= 12;
     });
+    healingValue -= (healingValue / 5) * 3;
     checkMotherShip("nuke");
-    updateHealthBar();
+    harmPlayer();
     deleteDead();
     newRound();
   }
+};
+
+const heal = () => {
+  playerHealth += healingValue;
+  healingValue = Math.floor((healingValue / 3) * 2.5);
+  showHealth();
+};
+
+const healAliens = () => {
+  invasionForce.map(alien => {
+    alien.hp += 0.5;
+  });
 };
 
 const checkMotherShip = () => {
