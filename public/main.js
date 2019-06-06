@@ -37,7 +37,7 @@ const newRound = () => {
 
 const showHealth = () => {
   document.getElementById("health-bar").innerHTML =
-    "Your Health: " + playerHealth;
+    "Your Health: " + Math.floor(playerHealth);
 };
 
 const loseGame = () => {
@@ -142,7 +142,7 @@ const nuke = () => {
 
 const heal = () => {
   playerHealth += healingValue;
-  healingValue = Math.floor((healingValue / 3) * 2.5);
+  healingValue = (healingValue / 3) * 2.5;
   showHealth();
 };
 
