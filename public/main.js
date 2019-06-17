@@ -68,9 +68,13 @@ const showInvasionForce = () => {
   invasionForce.map(alien => {
     alien.type === "Mothership"
       ? (document.getElementById("leader").innerHTML +=
-          "<p id='mother-ship'>" + alien.type + ": " + alien.hp + "</p>")
+          "<p id='mother-ship'>" +
+          alien.type +
+          ": " +
+          Math.floor(alien.hp) +
+          "</p>")
       : (document.getElementById("swarm").innerHTML +=
-          "<p id='alien'>" + alien.type + ": " + alien.hp + "</p>");
+          "<p id='alien'>" + alien.type + ": " + Math.floor(alien.hp) + "</p>");
   });
 };
 
